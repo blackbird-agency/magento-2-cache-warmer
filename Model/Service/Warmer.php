@@ -17,7 +17,6 @@ use Magento\Framework\UrlInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Promise\Utils;
-use Safe\Exceptions\UrlException;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -193,7 +192,6 @@ class Warmer implements WarmerInterface
      * @param  string|null $customerPassword
      * @return Client
      * @throws GuzzleException
-     * @throws UrlException
      */
     protected function getCrawlClient(
         ?string $ip = null,
@@ -247,13 +245,12 @@ class Warmer implements WarmerInterface
     /**
      * @param  string $ip
      * @return array
-     * @throws UrlException
      */
     protected function getDnsResolutionConfig(string $ip): array
     {
         $resolutions = [];
         foreach ($this->storeManager->getStores() as $store) {
-            $parsedUrl     = \safe\parse_url($store->getBaseUrl());
+            $parsedUrl     = \parse_url($store->getBaseUrl());
             $port          = ($parsedUrl['port'] ?? ($parsedUrl['scheme'] === 'https' ? 443 : 80));
             $host          = $parsedUrl['host'];
             $resolutions[] = sprintf('%s:%s:%s', $host, $port, $ip);

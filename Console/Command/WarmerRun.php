@@ -13,7 +13,6 @@ use Magento\Framework\Exception\InvalidArgumentException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\StoreManagerInterface;
-use Safe\Exceptions\UrlException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -102,7 +101,6 @@ class WarmerRun extends Command
      * @throws GuzzleException
      * @throws InvalidArgumentException
      * @throws NoSuchEntityException
-     * @throws UrlException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {

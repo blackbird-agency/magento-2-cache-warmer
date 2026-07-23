@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Blackbird\CacheWarmer\Api;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Safe\Exceptions\UrlException;
 
 /**
  * Interface for the cache warmer service
@@ -28,7 +27,6 @@ interface WarmerInterface
      *     total: int
      * }> Results of the warming process, indexed by crawl pool
      * @throws GuzzleException If there's an error with the HTTP client
-     * @throws UrlException If there's an error parsing URLs
      */
     public function warmUrls(array $urls): array;
 }
