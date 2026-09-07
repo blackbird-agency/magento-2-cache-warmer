@@ -60,7 +60,7 @@ class ProductUrlProvider implements EntityUrlProviderInterface
 
 
             foreach ($this->getUrlsFromProduct($product) as $url) {
-                $urls[] = $productUrl;
+                $urls[] = $url;
             }
 
             // Get parent product URLs if this is a child product
@@ -78,7 +78,7 @@ class ProductUrlProvider implements EntityUrlProviderInterface
                 // Process each parent product
                 foreach ($parentProductCollection as $parentProduct) {
                     foreach ($this->getUrlsFromParentProduct($product, $parentProduct) as $url) {
-                        $urls[] = $productUrl;
+                        $urls[] = $url;
                     }
                 }
             }
